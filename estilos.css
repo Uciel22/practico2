@@ -1,19 +1,24 @@
 @charset "utf-8";
+/*selector universal*/
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Times New Roman', Times, serif;
 }
+/*se declara los colores en variables para reutilizarlos más adelante,
+en una manera más sencilla*/
 :root{
-    --clr-gold: #DCC48E;
-    --clr-beige: #EAEFD3;
-    --clr-purple: #27233A;
+    --clr-gold: #e6ba53;
+    --clr-beige: #c7c9bd;
+    --clr-purple: #1a133b;
 }
+/*se aplica estilos al elemento body*/
 body{
     background-color: var(--clr-purple);
     color: var(--clr-beige);
 }
+/*se aplica estilos al elemento header, con características mas responsivos*/
 header{
     display: flex;
     flex-direction: column;
@@ -25,6 +30,12 @@ header{
     border-bottom-left-radius: 3rem;
     border-bottom-right-radius: 3rem;
 }
+/*al pasar el puntero sobre el h1, cambia de color y aplica una sombra*/
+h1:hover{
+    text-shadow: 2px -1px 13px #bd44bd;
+    color: #bd44bd;
+}
+/*aplica estilos al elemento main*/
 main{
     display: flex;
     flex-direction: column;
@@ -35,6 +46,7 @@ main{
 .instrucciones{
     margin-bottom: 2rem;
 }
+/*se aplica estilos a la clase marcador, para visualizar los resultados.*/
 .marcador{
     background-color: var(--clr-gold);
     padding: 1rem 2rem;
@@ -72,6 +84,7 @@ main{
     font-weight: 400;
     margin-bottom: .5rem;
 }
+/*se aplican estilos para la seleccion de piedra, papel o tijera*/
 .armas{
     display: flex;
     justify-content: center;
@@ -85,6 +98,17 @@ main{
     border-radius: .5rem;
     cursor: pointer;
 }
+/*al pasar el cursor sobre las opciones, estas cambian de tamaño;
+también se adaptan a varios navegadores.*/
+.arma:hover{
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    transform: scale(1.5);
+ }
+ /*se aplica estilo a la clase mensaje, donde se puede visualizar
+ lo que seleccionó el usuario y la opción que eligió la computadora*/
 .mensaje{
     margin-bottom: 2rem;
     line-height: 1.8;
@@ -95,6 +119,7 @@ main{
     border-radius:.25rem;
     padding-inline: .25rem;
 }
+/*el boton de reiniciar juego, aparece luego de conocer quien es el ganador*/
 .btn{
     border: 0;
     line-height: 1;
@@ -106,7 +131,18 @@ main{
     cursor: pointer;
     text-transform: uppercase;
     font-weight: 600;
+    transition: all 1s ease;
 }
+/*al pasar el cursor sobre el boton de reiniciar juego, este cambia de tamaño,
+con un efecto de transicion, que se aplicó en la clase .btn */
+.btn:hover{
+   font-size: 1.2rem;
+    background: var(--clr-beige);
+    color: #bd44bd;
+}
+/*Este estilo se aplica al boton de reiniciar juego, lo que hace que se oculte 
+durante la partida, hasta que se conozca el ganador, y se pueda optar por 
+reiniciar el juego.*/
 .disable{
     display: none;
 }
