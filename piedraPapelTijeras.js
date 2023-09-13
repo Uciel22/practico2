@@ -2,6 +2,7 @@
 let puntosUsuario = 0;
 let puntosPC = 0;
 
+
 let instrucciones = document.querySelector("#instrucciones");
 let contenedorPuntosUsuario = document.querySelector("#puntos-usuario");
 let contenedorPuntosPC = document.querySelector("#puntos-computadora");
@@ -32,7 +33,6 @@ function comenzarJugada(e){
     //la computadora elige un numero random
     let eleccionPC = Math.floor(Math.random() * 3);
     let eleccionUsuario = e.currentTarget.id;
-    console.log(eleccionUsuario);
 
     // eleccion de PC: piedra = 0, papel = 1 y tijera = 2
 
@@ -49,32 +49,39 @@ function comenzarJugada(e){
     if(
         (eleccionUsuario === "piedra✊" && eleccionPC === "tijera✌")|| 
         (eleccionUsuario === "tijera✌" && eleccionPC === "papel✋")||
-        (eleccionUsuario === "papel✋" && eleccionPC==="piedra✊")) {
-        ganaUsuario();} else if((eleccionPC === "piedra✊" && eleccionUsuario === "tijera✌")|| 
+        (eleccionUsuario === "papel✋" && eleccionPC==="piedra✊")
+        ) {
+        ganaUsuario();
+    } else if(
+        (eleccionPC === "piedra✊" && eleccionUsuario === "tijera✌")|| 
         (eleccionPC === "tijera✌" && eleccionUsuario === "papel✋")||
-        (eleccionPC === "papel✋" && eleccionUsuario==="piedra✊")){
-        ganaComputadora();} else {
+        (eleccionPC === "papel✋" && eleccionUsuario==="piedra✊")
+        ){
+        ganaComputadora();
+    } else {
         empate();
     }
+
     mensaje.classList.remove("disable");
     contenedorEleccionUsuario.innerText = eleccionUsuario;
     contenedorEleccionPC.innerText = eleccionPC;
 
  // el primero que llegue a 3 puntos gana el juego, sin contar los empates   
-if(puntosUsuario === 3 || puntosPC === 3){
+ if(puntosUsuario === 3 || puntosPC === 3){
     if (puntosUsuario === 3){
         instrucciones.innerText = nombreUsuario + " 🔥 ¡Ganaste el juego! 🔥";
     }
     if (puntosPC === 3){
         instrucciones.innerText = "😭 ¡La computadora ganó el juego! 😭";
     }
+    
     elegiTuArma.classList.add("disable");
     reiniciar.classList.remove("disable");
     reiniciar.addEventListener("click", reiniciarPartida);
-}
+ }
 }
 
-//funciones 
+//funciones que modifican la puntuacion
 function ganaUsuario(){
     puntosUsuario++;
     contenedorPuntosUsuario.innerText = puntosUsuario;
